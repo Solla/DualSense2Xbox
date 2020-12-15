@@ -44,3 +44,10 @@ If not, please download these libraries manually.
 
 * [Dualsense, Haptics, Leds, and More (Hid Output Report)](https://www.reddit.com/r/gamedev/comments/jumvi5/dualsense_haptics_leds_and_more_hid_output_report/)
 * [DS4Windows](https://github.com/Ryochan7/DS4Windows)
+
+# Implemented Game(s)
+
+**Please switch to the corresponding branch and build the code. You can also choose to download the released files.**
+
+* [GTA V Branch](https://github.com/Solla/DualSense2Xbox/tree/GTAV_AdaptiveTrigger)
+* [GTA V Release](https://github.com/Solla/DualSense2Xbox/releases/tag/v0.1_Alpha_Version)
