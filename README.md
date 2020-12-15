@@ -1,26 +1,48 @@
-# DualSense2Xbox
+# DualSense2Xbox: DualSense Adaptive Trigger for GTA V
 
 A lightweight tool to use DualSense on Windows based on ViGEm.
+
 Currently it works perfectly to emulate an Xbox 360 controller.
 
-## Features
-With DualSense2Xbox, your DualSense can support (almost) all games based on XInput.
+In this branch, I implemented a program to support Adaptive Trigger for GTA V through Black-box Approaches.
 
-The Adaptive Trigger can be modified by calling the function ``dualSense.SetLeftAdaptiveTrigger()`` and ``dualSense.SetRightAdaptiveTrigger()``.
+It means that the program will not modify any code in GTA V.
 
-Here are some examples:
-```
-dualSense.SetLeftAdaptiveTrigger(DualSense_Base.RigidTrigger);
-dualSense.SetRightAdaptiveTrigger(DualSense_Base.HardTrigger);
-dualSense.SetLeftAdaptiveTrigger(DualSense_Base.VibrateTrigger_10Hz);    //Vibrate 10Hz if presses
-dualSense.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(3));    //Vibrate 3Hz if presses
-```
+However, I still don't suggest that anyone use this program while playing GTA Online.
 
-My friends and I are working on fitting games' events by black-box approaches.
-In the future, we might be able to experience the Adaptive Trigger on PC platforms.
+Due to the Black-box approaches' limitations, the program doesn't know how many bullets in your magazine.
 
-![Adaptive Trigger on GTA5 with 5Hz firing](5HzFiring.gif)
+The haptic feedback will not stop when reloading.
 
+The patterns are not defined carefully, so you might feel that the frequencies of feedback do not match the frequencies of firing.
+
+This version is still not supporting Bluetooth Connection. Please use a USB-C cable to connect DualSenses to the PC.
+
+The program is still not perfect. There are several bugs.
+
+I used the joystick's positions to guess what type of weapons users choose, and the approach is not precise.
+
+If you feel the feedback is awkward, please select the weapons once again.
+
+Besides, the program doesn't handle the error when the cable is loose, and GTA V will be freeze for a while.
+
+Make sure your cable is secure before using this program.
+
+You can download the pre-compiled version here:
+
+* [GTA V Release](https://github.com/Solla/DualSense2Xbox/releases/tag/v0.1_Alpha_Version)
+
+Don't forget to install the ViGEm driver first.
+
+## Installation
+
+Please preinstall the ViGEm driver first.
+
+* [ViGEm Bus](https://github.com/ViGEm/ViGEmBus)
+
+All C# libraries should be automaticly downloaded by NuGet Package Manager.
+If not, please download these libraries manually.
+* [How to Use Nuget Packages](https://www.syncfusion.com/blogs/post/how-to-use-nuget-packages.aspx)
 
 ## Buliding Environment
   - Windows 10
@@ -30,15 +52,6 @@ In the future, we might be able to experience the Adaptive Trigger on PC platfor
   - Device.Net 3.1.0
   - Hid.Net 3.1.0
   - Usb.Net 3.1.0
-
-## Installation
-
-Please preinstall the ViGEm  driver first.
-* [ViGEm Bus](https://github.com/ViGEm/ViGEmBus)
-
-All C# libraries should be automaticly downloaded by NuGet Package Manager.
-If not, please download these libraries manually.
-* [How to Use Nuget Packages](https://www.syncfusion.com/blogs/post/how-to-use-nuget-packages.aspx)
 
 ## Acknowledgement and Reference
 
