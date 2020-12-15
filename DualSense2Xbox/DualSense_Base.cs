@@ -67,6 +67,10 @@ namespace DualSense2Xbox
         }
         private void Controller_FeedbackReceived(object sender, Xbox360FeedbackReceivedEventArgs e)
         {
+            if (e.SmallMotor == 105)
+                GTA_AdaptiveTrigger.UpdateWeapons(this, RightThumbX, RightThumbY);
+            if (RightTrigger > 50)
+                GTA_AdaptiveTrigger.UpdateShootHaptic(this, e.SmallMotor, e.LargeMotor);
             SetVibration(e.SmallMotor, e.LargeMotor);
         }
         public void SendData(byte[] SendArray)
