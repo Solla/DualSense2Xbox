@@ -27,15 +27,15 @@ namespace DualSense2Xbox
         public override void SetAdaptiveTrigger(bool IsLeftTrigger, Int64 Parameter)
         {
             if (IsLeftTrigger)
-                LeftTrigger = Parameter;
+                LeftAdaptiveTrigger = Parameter;
             else
-                RightTrigger = Parameter;
+                RightAdaptiveTrigger = Parameter;
             SendHaptics();
         }
         private void SendHaptics()
         {
-            var LeftTriggerParameter = BitConverter.GetBytes(LeftTrigger);
-            var RightTriggerParameter = BitConverter.GetBytes(RightTrigger);
+            var LeftTriggerParameter = BitConverter.GetBytes(LeftAdaptiveTrigger);
+            var RightTriggerParameter = BitConverter.GetBytes(RightAdaptiveTrigger);
 
             var outputReport = new byte[WriteBufferSize];
             outputReport[0] = 0x02; // report type

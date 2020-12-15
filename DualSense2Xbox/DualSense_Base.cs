@@ -27,7 +27,12 @@ namespace DualSense2Xbox
         protected ViGEmClient client = new ViGEmClient();
         protected IXbox360Controller controller;
         protected byte LeftMotor, RightMotor;
-        protected Int64 LeftTrigger, RightTrigger;
+        protected Int64 LeftAdaptiveTrigger, RightAdaptiveTrigger;
+        
+        protected short LeftThumbX, LeftThumbY, RightThumbX, RightThumbY;
+        protected byte LeftTrigger, RightTrigger;
+        protected bool Y, B, A, X, Up, Right, Down, Left;
+        protected bool LeftThumb, RightThumb, Start, Back, LeftShoulder, RightShoulder;
 
         public DualSense_Base(IDevice _device)
         {
@@ -80,29 +85,29 @@ namespace DualSense2Xbox
         }
         public void UpdateButtonStatus(byte LX, byte LY, byte RX, byte RY, byte L2, byte R2, byte Button_DPad_State, byte Button2_Status)
         {
-            controller.SetAxisValue(Xbox360Axis.LeftThumbX, (short)((LX << 8) - 32768));
-            controller.SetAxisValue(Xbox360Axis.LeftThumbY, (short)~((LY << 8) - 32768));
-            controller.SetAxisValue(Xbox360Axis.RightThumbX, (short)((RX << 8) - 32768));
-            controller.SetAxisValue(Xbox360Axis.RightThumbY, (short)~((RY << 8) - 32768));
-            controller.SetSliderValue(Xbox360Slider.LeftTrigger, L2);
-            controller.SetSliderValue(Xbox360Slider.RightTrigger, R2);
+            controller.SetAxisValue(Xbox360Axis.LeftThumbX, LeftThumbX = (short)((LX << 8) - 32768));
+            controller.SetAxisValue(Xbox360Axis.LeftThumbY, LeftThumbY = (short)~((LY << 8) - 32768));
+            controller.SetAxisValue(Xbox360Axis.RightThumbX, RightThumbX = (short)((RX << 8) - 32768));
+            controller.SetAxisValue(Xbox360Axis.RightThumbY, RightThumbY = (short)~((RY << 8) - 32768));
+            controller.SetSliderValue(Xbox360Slider.LeftTrigger, LeftTrigger = L2);
+            controller.SetSliderValue(Xbox360Slider.RightTrigger, RightTrigger = R2);
             //
-            controller.SetButtonState(Xbox360Button.Y, (Button_DPad_State & (1 << 7)) > 0);
-            controller.SetButtonState(Xbox360Button.B, (Button_DPad_State & (1 << 6)) > 0);
-            controller.SetButtonState(Xbox360Button.A, (Button_DPad_State & (1 << 5)) > 0);
-            controller.SetButtonState(Xbox360Button.X, (Button_DPad_State & (1 << 4)) > 0);
+            controller.SetButtonState(Xbox360Button.Y, Y = (Button_DPad_State & (1 << 7)) > 0);
+            controller.SetButtonState(Xbox360Button.B, B = (Button_DPad_State & (1 << 6)) > 0);
+            controller.SetButtonState(Xbox360Button.A, A = (Button_DPad_State & (1 << 5)) > 0);
+            controller.SetButtonState(Xbox360Button.X, X = (Button_DPad_State & (1 << 4)) > 0);
             int dPad = Button_DPad_State & 0x0F;
-            controller.SetButtonState(Xbox360Button.Up, dPad == 0 || dPad == 1 || dPad == 7);
-            controller.SetButtonState(Xbox360Button.Right, dPad == 1 || dPad == 2 || dPad == 3);
-            controller.SetButtonState(Xbox360Button.Down, dPad == 3 || dPad == 4 || dPad == 5);
-            controller.SetButtonState(Xbox360Button.Left, dPad == 5 || dPad == 6 || dPad == 7);
+            controller.SetButtonState(Xbox360Button.Up, Up = (dPad == 0 || dPad == 1 || dPad == 7));
+            controller.SetButtonState(Xbox360Button.Right, Right = (dPad == 1 || dPad == 2 || dPad == 3));
+            controller.SetButtonState(Xbox360Button.Down, Down = (dPad == 3 || dPad == 4 || dPad == 5));
+            controller.SetButtonState(Xbox360Button.Left, Left = (dPad == 5 || dPad == 6 || dPad == 7));
             //
-            controller.SetButtonState(Xbox360Button.RightThumb, (Button2_Status & (1 << 7)) > 0);
-            controller.SetButtonState(Xbox360Button.LeftThumb, (Button2_Status & (1 << 6)) > 0);
-            controller.SetButtonState(Xbox360Button.Start, (Button2_Status & (1 << 5)) > 0);    //Option
-            controller.SetButtonState(Xbox360Button.Back, (Button2_Status & (1 << 4)) > 0);    //Share
-            controller.SetButtonState(Xbox360Button.RightShoulder, (Button2_Status & (1 << 1)) > 0);
-            controller.SetButtonState(Xbox360Button.LeftShoulder, (Button2_Status & (1 << 0)) > 0);
+            controller.SetButtonState(Xbox360Button.RightThumb, RightThumb= (Button2_Status & (1 << 7)) > 0);
+            controller.SetButtonState(Xbox360Button.LeftThumb, LeftThumb = (Button2_Status & (1 << 6)) > 0);
+            controller.SetButtonState(Xbox360Button.Start, Start = (Button2_Status & (1 << 5)) > 0);    //Option
+            controller.SetButtonState(Xbox360Button.Back, Back = (Button2_Status & (1 << 4)) > 0);    //Share
+            controller.SetButtonState(Xbox360Button.RightShoulder, RightShoulder = (Button2_Status & (1 << 1)) > 0);
+            controller.SetButtonState(Xbox360Button.LeftShoulder, LeftShoulder = (Button2_Status & (1 << 0)) > 0);
             controller.SubmitReport();
         }
         public void SetLeftAdaptiveTrigger(Int64 Parameter)
