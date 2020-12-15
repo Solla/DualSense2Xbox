@@ -1,8 +1,8 @@
-# DualSense2Xbox: DualSense Adaptive Trigger for GTA V
+# DualSense2Xbox: DualSense Adaptive Trigger for GTA V on PC
 
 A lightweight tool to use DualSense on Windows based on ViGEm.
 
-Currently it works perfectly to emulate an Xbox 360 controller.
+Currently, it works perfectly to emulate an Xbox 360 controller.
 
 In this branch, I implemented a program to support Adaptive Trigger for GTA V through Black-box Approaches.
 
@@ -24,7 +24,7 @@ I used the joystick's positions to guess what type of weapons users choose, and 
 
 If you feel the feedback is awkward, please select the weapons once again.
 
-Besides, the program doesn't handle the error when the cable is loose, and GTA V will be freeze for a while.
+The program doesn't handle the error when the cable is loose, and GTA V will be freeze for a while.
 
 Make sure your cable is secure before using this program.
 
