@@ -96,7 +96,7 @@ namespace DualSense2Xbox
                     break;
                 case WeaponTypeEnum.Handguns:
                     if (RightShootingVibration == 95)
-                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(5));  //穿甲
+                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(5));  //AP Pistol
                     else
                         Controller.SetRightAdaptiveTrigger(DualSense_Base.VerySoftTrigger);
                     break;
@@ -105,13 +105,13 @@ namespace DualSense2Xbox
                     break;
                 case WeaponTypeEnum.HeavyWeapons:
                     if (RightShootingVibration == 92)
-                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(15));  //火神
+                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(15));  //Minigun
                     else
                         Controller.SetRightAdaptiveTrigger(DualSense_Base.RigidTrigger);
                     break;
                 case WeaponTypeEnum.Shotguns:
                     if (RightShootingVibration == 164 || RightShootingVibration == 209)
-                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(3));   //突擊
+                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(3));   //Assault Shotgun
                     else
                         Controller.SetRightAdaptiveTrigger(DualSense_Base.HardTrigger);
                     break;
@@ -120,7 +120,7 @@ namespace DualSense2Xbox
                     break;
                 case WeaponTypeEnum.SniperRifles:
                     if (RightShootingVibration == 200)
-                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(3));   //突擊
+                        Controller.SetRightAdaptiveTrigger(DualSense_Base.VibrateTrigger(3));   //Marksman Rifle 
                     else
                         Controller.SetRightAdaptiveTrigger(DualSense_Base.VeryHardTrigger);
                     break;
