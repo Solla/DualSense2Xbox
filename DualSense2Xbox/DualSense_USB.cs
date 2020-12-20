@@ -40,8 +40,8 @@ namespace DualSense2Xbox
             var outputReport = new byte[WriteBufferSize];
             outputReport[0] = 0x02; // report type
             outputReport[1] = 0x1 | 0x2 | 0x4 | 0x8; // flags determiing what changes this packet will perform
-            outputReport[3] = LeftMotor;
-            outputReport[4] = RightMotor;
+            outputReport[3] = RightMotor;
+            outputReport[4] = LeftMotor;
             for (int i = 0; i < 7; ++i)
             {
                 outputReport[11 + i] = RightTriggerParameter[i];
@@ -51,6 +51,5 @@ namespace DualSense2Xbox
             outputReport[31] = LeftTriggerParameter[7];
             SendData(outputReport);
         }
-
     }
 }
