@@ -24,10 +24,15 @@ namespace DualSense2Xbox
             int DualSenseCount = DualSenseList.Length;
             if (DualSenseCount <= 0)
                 throw new Exception("Cannot find DualSense. Check the cable again!");
-            if (DualSenseList[0].ReadBufferSize != 64)
-                throw new NotImplementedException("Currently this application supports USB connection only.");
             var DualSenseDevice = DeviceManager.Current.GetDevice(DualSenseList[0]);
-            DualSense_USB dualSense = new DualSense_USB(DualSenseDevice); 
+
+            DualSense_Base dualSense;
+            if (DualSenseList[0].ReadBufferSize == 64)
+                dualSense = new DualSense_USB(DualSenseDevice);
+            else if (DualSenseList[0].ReadBufferSize == 78)
+                dualSense = new DualSense_Bluetooth(DualSenseDevice);
+            else
+                throw new NotImplementedException("Currently this application supports USB connection only.");
 
             //Set Adaptive Trigger as "Normal"
             dualSense.SetLeftAdaptiveTrigger(DualSense_Base.NormalTrigger);

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="DualSense_Base.cs" />
     <Compile Include="DualSense_Base_Static.cs" />
+    <Compile Include="DualSense_Bluetooth.cs" />
     <Compile Include="DualSense_USB.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
