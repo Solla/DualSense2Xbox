@@ -1,5 +1,7 @@
-# DualSense2Xbox
+# Project Suspended 
+Due to the shortage of PS5, I still have no PS5 for further development.
 
+# DualSense2Xbox
 A lightweight tool to use DualSense on Windows based on ViGEm.
 Currently it works perfectly to emulate an Xbox 360 controller.
 
